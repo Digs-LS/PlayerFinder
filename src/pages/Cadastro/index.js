@@ -1,33 +1,19 @@
 import React, { useState } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+import { Avatar, Button, TextField, Grid, Box, Typography, Container, Paper, Alert, Snackbar,
+   FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select,
+   OutlinedInput, InputAdornment, IconButton } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import InputFileUpload from "../../components/fileUpload";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { ptBR } from "@mui/x-date-pickers/locales";
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormLabel from "@mui/material/FormLabel";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
 import Inicio from "../Inicio";
 
 const darkTheme = createTheme({
@@ -37,7 +23,7 @@ const darkTheme = createTheme({
 });
 
 const min = dayjs().add(-100, "year");
-const max = dayjs().add(0, "year");
+const max = dayjs().add(0, "year");//DatePicker max/min date
 
 const Page = () => {
   const { signup } = useAuth();
@@ -115,6 +101,12 @@ const Page = () => {
   const handleChange = (event) => {
     setEstado(event.target.value);
   }; //Select Estado
+
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };//Mostrar Senha
 
   const { signed } = useAuth();
   if (signed) {
@@ -213,28 +205,44 @@ const Page = () => {
               >
                 <Grid container spacing={4.5}>
                   <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="senha"
-                      label="Senha"
-                      type="password"
-                      id="senha"
-                      value={senha}
-                      onChange={(e) => [setSenha(e.target.value), setError("")]}
-                    />
+                    <FormControl sx={{ width: '100%' }} variant="outlined">
+                      <InputLabel htmlFor="senha">Senha *</InputLabel>
+                      <OutlinedInput
+                        required
+                        id="senha"
+                        name="senha"
+                        value={senha}
+                        onChange={(e) => [setSenha(e.target.value), setError("")]}  
+                        type={showPassword ? 'text' : 'password'}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="Mostrar senha"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                              edge="end"
+                            >
+                              {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                        label="Senha"
+                      />
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="confirmaSenha"
-                      label="Confirmar senha"
-                      type="password"
-                      id="confirmaSenha"
-                      value={ConfirmaSenha}
-                      onChange={(e) => [setConfirmaSenha(e.target.value), setError("")]}
-                    />
+                    <FormControl sx={{ width: '100%' }} variant="outlined">
+                      <InputLabel htmlFor="senha">Confirmar senha *</InputLabel>
+                      <OutlinedInput
+                        required
+                        id="confirmaSenha"
+                        name="confirmaSenha"
+                        label="Confirmar senha"
+                        type="password"
+                        value={ConfirmaSenha}
+                        onChange={(e) => [setConfirmaSenha(e.target.value), setError("")]}
+                      />
+                    </FormControl>
                   </Grid>
 
                   <Grid item xs={12}>

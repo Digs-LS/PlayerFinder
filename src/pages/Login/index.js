@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { Avatar, Button, TextField, Grid, Box, Typography,
+  FormControl, FormControlLabel, InputLabel, Checkbox,
+  OutlinedInput, InputAdornment, IconButton } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -20,7 +16,7 @@ const darkTheme = createTheme({
 });
 
 const Page = () => {
-  const { signin } = useAuth();
+  const { signin, signed } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -29,11 +25,6 @@ const Page = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      Email: data.get("email"),
-      Senha: data.get("senha"),
-    });
 
     const res = signin(email, senha);
 
@@ -45,7 +36,12 @@ const Page = () => {
     navigate("/inicio");
   };
 
-  const { signed } = useAuth();
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };//Mostrar Senha
+
   if(signed){
     return <Inicio />
   }
@@ -79,18 +75,30 @@ const Page = () => {
             value={email}
             onChange={(e) => [setEmail(e.target.value), setError("")]}
           />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            label="Senha"
-            id="senha"
-            name="senha"
-            autoComplete="current-password"
-            type="password"
-            value={senha}
-            onChange={(e) => [setSenha(e.target.value), setError("")]}
-          />
+          <FormControl sx={{ width: '100%' }} variant="outlined">
+            <InputLabel htmlFor="senha">Senha *</InputLabel>
+            <OutlinedInput
+              required
+              id="senha"
+              name="senha"
+              value={senha}
+              onChange={(e) => [setSenha(e.target.value), setError("")]}  
+              type={showPassword ? 'text' : 'password'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="Mostrar senha"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Senha"
+            />
+          </FormControl>
           <FormControlLabel
             control={
               <Checkbox

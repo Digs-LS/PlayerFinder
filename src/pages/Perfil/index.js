@@ -111,11 +111,15 @@ const darkTheme = createTheme({
                                         <Typography variant="h6" sx={{width: '20%', color: '#16C83D', marginRight: '1vw', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
                                             Username:
                                         </Typography>
-                                        {!editar ?
-                                            <Typography variant="h5" sx={{display: 'inline'}}>{user[0].usuario}</Typography>
-                                        :
-                                            <TextField label="Usuário" defaultValue={user[0].usuario} sx={{width: '75%'}}/>
-                                        }
+                                            <TextField
+                                            required
+                                            defaultValue={user[0].usuario}
+                                            InputProps={{
+                                              readOnly: !editar === true ? true : false
+                                            }}
+                                            variant="standard"
+                                            sx={{width: '65%'}}
+                                          />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Typography variant="h6" sx={{color: '#16C83D', marginRight: '1vw', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
@@ -124,7 +128,7 @@ const darkTheme = createTheme({
                                         {!editar ?
                                             <Typography variant="h5" sx={{display: 'inline'}}>{user[0].nome}</Typography>
                                         :
-                                            <TextField label="Usuário" defaultValue={user[0].nome} sx={{width: '75%'}}/>
+                                            <TextField variant="standard" label="Usuário" defaultValue={user[0].nome} sx={{width: '75%'}}/>
                                         }
                                     </Grid>
                                     <Grid item xs={12}>
