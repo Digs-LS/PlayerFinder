@@ -32,7 +32,6 @@ const darkTheme = createTheme({
         console.log({Usuário: data.get("usuario")});
     };
 
-
     return (
         <ThemeProvider theme={darkTheme}>
             <Container component="main" maxWidth="xs">
@@ -52,7 +51,7 @@ const darkTheme = createTheme({
                         Meu perfil
                     </Typography>
 
-                    {editar ? 
+                    {editar === false ? 
                         <Button
                             onClick={toggleEditar}
                             variant="contained"
@@ -107,40 +106,40 @@ const darkTheme = createTheme({
                                     <Grid item xs={12}>
                                         <InputFileUpload />
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography variant="h6" sx={{width: '20%', color: '#16C83D', marginRight: '1vw', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
+
+                                    <Grid item xs={12} >
+                                        <Typography variant="h6" sx={{color: '#16C83D', paddingBottom: '0.5vh', float: 'inline-start'}}>
                                             Username:
                                         </Typography>
-                                            <TextField
-                                            required
-                                            defaultValue={user[0].usuario}
-                                            InputProps={{
-                                              readOnly: !editar === true ? true : false
-                                            }}
-                                            variant="standard"
-                                            sx={{width: '65%'}}
-                                          />
+                                        <TextField required defaultValue={user[0].usuario} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography variant="h6" sx={{color: '#16C83D', marginRight: '1vw', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
-                                            Nome:
-                                        </Typography>
-                                        {!editar ?
-                                            <Typography variant="h5" sx={{display: 'inline'}}>{user[0].nome}</Typography>
-                                        :
-                                            <TextField variant="standard" label="Usuário" defaultValue={user[0].nome} sx={{width: '75%'}}/>
-                                        }
+                                    
+                                    <Grid item xs={12} >
+                                        <Grid container>
+                                            <Grid item xs={3}>
+                                                <Typography variant="h6" sx={{color: '#16C83D', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
+                                                    Nome:
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={8}>
+                                                <TextField required defaultValue={user[0].nome} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
+                                            </Grid>
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography variant="h6" sx={{color: '#16C83D', marginRight: '1vw', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
-                                            Email:
-                                        </Typography>
-                                        {!editar ?
-                                            <Typography variant="h5" sx={{display: 'inline'}}>{user[0].email}</Typography>
-                                        :
-                                            <TextField label="Usuário" defaultValue={user[0].email} sx={{width: '75%'}}/>
-                                        }
+                                    
+                                    <Grid item xs={12} >
+                                        <Grid container>
+                                            <Grid item xs={3}>
+                                                <Typography variant="h6" sx={{color: '#16C83D', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
+                                                    Email:
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={8}>
+                                                <TextField required defaultValue={user[0].email} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
+                                            </Grid>
+                                        </Grid>
                                     </Grid>
+
                                 </Grid>
                             </Paper>
 
@@ -184,7 +183,7 @@ const darkTheme = createTheme({
                                         {!editar ?
                                             <Typography variant="h5" sx={{display: 'inline'}}>{user[0].genero}</Typography>
                                         :
-                                            <TextField label="Usuário" defaultValue={user[0].genero} sx={{width: '75%'}}/>
+                                            <TextField label="Usuário" variant="filled" defaultValue={user[0].genero} sx={{width: '75%'}}/>
                                         }
                                     </Grid>
                                 </Grid>
