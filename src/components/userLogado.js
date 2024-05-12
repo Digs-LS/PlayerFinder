@@ -98,12 +98,14 @@ export default function AccountMenu() {
                     </ListItemIcon>
                     Amigos
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                        <AddIcon fontSize="small" />
-                    </ListItemIcon>
-                    Adicionar jogo
-                </MenuItem>
+                <Link to="/adicionar-jogo" style={{color: 'white', textDecoration: 'none'}}>
+                    <MenuItem onClick={handleClose}>
+                        <ListItemIcon>
+                            <AddIcon fontSize="small" />
+                        </ListItemIcon>
+                        Adicionar jogo
+                    </MenuItem>
+                </Link>
                 <Divider />
                 <MenuItem onClick={() => [signout(), navigate("/")]}>
                     <ListItemIcon>

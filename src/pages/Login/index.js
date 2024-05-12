@@ -65,13 +65,12 @@ const Page = () => {
         <Box component="form" Validate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <TextField
             margin="normal"
+            autoFocus
             required
             fullWidth
-            label="Email"
-            id="email"
-            name="email"
             autoComplete="email"
-            autoFocus
+            label="Email"
+            name="email"
             value={email}
             onChange={(e) => [setEmail(e.target.value), setError("")]}
           />
@@ -79,7 +78,6 @@ const Page = () => {
             <InputLabel htmlFor="senha">Senha *</InputLabel>
             <OutlinedInput
               required
-              id="senha"
               name="senha"
               value={senha}
               onChange={(e) => [setSenha(e.target.value), setError("")]}  

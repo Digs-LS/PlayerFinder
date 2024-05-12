@@ -47,17 +47,6 @@ const Page = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      Usuário: data.get("usuario"),
-      Nome: data.get("nome"),
-      Email: data.get("email"),
-      Senha: data.get("senha"),
-      ConfirmaSenha: data.get("confirmaSenha"),
-      DataNascimento: data.get("nascimento"),
-      Estado: data.get("estado"),
-      Gênero: data.get("genero"),
-    });
 
     if (senha !== ConfirmaSenha) {
       setError(
@@ -155,13 +144,11 @@ const Page = () => {
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
+                      autoFocus
                       required
                       fullWidth
                       autoComplete="given-name"
-                      id="usuario"
                       label="Usuário"
-                      name="usuario"
-                      autoFocus
                       value={usuario}
                       onChange={(e) => [setUsuario(e.target.value), setError("")]}
                     />
@@ -171,9 +158,7 @@ const Page = () => {
                       required
                       fullWidth
                       autoComplete="name"
-                      id="nome"
                       label="Nome"
-                      name="nome"
                       value={nome}
                       onChange={(e) => [setNome(e.target.value), setError("")]}
                     />
@@ -183,9 +168,7 @@ const Page = () => {
                       required
                       fullWidth
                       autoComplete="email"
-                      id="email"
                       label="Email"
-                      name="email"
                       value={email}
                       onChange={(e) => [setEmail(e.target.value), setError("")]}
                     />
@@ -209,7 +192,6 @@ const Page = () => {
                       <InputLabel htmlFor="senha">Senha *</InputLabel>
                       <OutlinedInput
                         required
-                        id="senha"
                         name="senha"
                         value={senha}
                         onChange={(e) => [setSenha(e.target.value), setError("")]}  
@@ -235,7 +217,6 @@ const Page = () => {
                       <InputLabel htmlFor="senha">Confirmar senha *</InputLabel>
                       <OutlinedInput
                         required
-                        id="confirmaSenha"
                         name="confirmaSenha"
                         label="Confirmar senha"
                         type="password"
@@ -253,7 +234,6 @@ const Page = () => {
                     >
                       <DatePicker
                         label="Data de nascimento *"
-                        name="nascimento"
                         // value={nascimento}
                         // onChange={(e) => [setNascimento(e.target.value), setError("")]}
                         minDate={min}
@@ -275,40 +255,38 @@ const Page = () => {
                       <Select
                         required
                         labelId="label-select-input"
-                        id="demo-simple-select-helper"
-                        value={estado}
-                        name="estado"
                         label="Estado"
+                        value={estado}
                         onChange={handleChange}
                       >
                         <MenuItem value="" disabled> <em>Selecione</em> </MenuItem>
-                        <MenuItem value={"ac"}> AC - Acre</MenuItem>
-                        <MenuItem value={"al"}> AL - Alagoas</MenuItem>
-                        <MenuItem value={"ap"}> AP - Amapá</MenuItem>
-                        <MenuItem value={"am"}> AM - Amazonas</MenuItem>
-                        <MenuItem value={"ba"}> BA - Bahia</MenuItem>
-                        <MenuItem value={"ce"}> CE - Ceará</MenuItem>
-                        <MenuItem value={"df"}> DF - Distrito Federal</MenuItem>
-                        <MenuItem value={"es"}> ES - Espírito Santo</MenuItem>
-                        <MenuItem value={"go"}> GO - Goiás</MenuItem>
-                        <MenuItem value={"ma"}> MA - Maranhão</MenuItem>
-                        <MenuItem value={"mt"}> MT - Mato Grosso</MenuItem>
-                        <MenuItem value={"ms"}> MS - Mato Grosso do Sul</MenuItem>
-                        <MenuItem value={"mg"}> MG - Minas Geráis</MenuItem>
-                        <MenuItem value={"pa"}> PA - Pará</MenuItem>
-                        <MenuItem value={"pb"}> PB - Paraíba</MenuItem>
-                        <MenuItem value={"pr"}> PR - Paraná</MenuItem>
-                        <MenuItem value={"pe"}> PE - Pernambuco</MenuItem>
-                        <MenuItem value={"pi"}> PI - Piauí</MenuItem>
-                        <MenuItem value={"rj"}> RJ - Rio de Janeiro</MenuItem>
-                        <MenuItem value={"rn"}> RN - Rio Grande do Norte</MenuItem>
-                        <MenuItem value={"rs"}> RS - Rio Grande do Sul</MenuItem>
-                        <MenuItem value={"ro"}> RO - Rondônia</MenuItem>
-                        <MenuItem value={"rr"}> RR - Roraima</MenuItem>
-                        <MenuItem value={"sc"}> SC - Santa Catarina</MenuItem>
-                        <MenuItem value={"sp"}> SP - São Paulo</MenuItem>
-                        <MenuItem value={"se"}> SE - Sergipe</MenuItem>
-                        <MenuItem value={"to"}> TO - Tocantins</MenuItem>
+                        <MenuItem value={"acre"}> AC - Acre</MenuItem>
+                        <MenuItem value={"alagoas"}> AL - Alagoas</MenuItem>
+                        <MenuItem value={"amapa"}> AP - Amapá</MenuItem>
+                        <MenuItem value={"amazonas"}> AM - Amazonas</MenuItem>
+                        <MenuItem value={"bahia"}> BA - Bahia</MenuItem>
+                        <MenuItem value={"ceara"}> CE - Ceará</MenuItem>
+                        <MenuItem value={"distrito federal"}> DF - Distrito Federal</MenuItem>
+                        <MenuItem value={"espirito santo"}> ES - Espírito Santo</MenuItem>
+                        <MenuItem value={"goias"}> GO - Goiás</MenuItem>
+                        <MenuItem value={"maranhao"}> MA - Maranhão</MenuItem>
+                        <MenuItem value={"mato grosso"}> MT - Mato Grosso</MenuItem>
+                        <MenuItem value={"mato grosso do sul"}> MS - Mato Grosso do Sul</MenuItem>
+                        <MenuItem value={"minas gerais"}> MG - Minas Geráis</MenuItem>
+                        <MenuItem value={"para"}> PA - Pará</MenuItem>
+                        <MenuItem value={"paraiba"}> PB - Paraíba</MenuItem>
+                        <MenuItem value={"parana"}> PR - Paraná</MenuItem>
+                        <MenuItem value={"pernambuco"}> PE - Pernambuco</MenuItem>
+                        <MenuItem value={"piaui"}> PI - Piauí</MenuItem>
+                        <MenuItem value={"rio de janeiro"}> RJ - Rio de Janeiro</MenuItem>
+                        <MenuItem value={"rio grande do norte"}> RN - Rio Grande do Norte</MenuItem>
+                        <MenuItem value={"rio grande do sul"}> RS - Rio Grande do Sul</MenuItem>
+                        <MenuItem value={"rondonia"}> RO - Rondônia</MenuItem>
+                        <MenuItem value={"roraima"}> RR - Roraima</MenuItem>
+                        <MenuItem value={"santa catarina"}> SC - Santa Catarina</MenuItem>
+                        <MenuItem value={"sao paulo"}> SP - São Paulo</MenuItem>
+                        <MenuItem value={"sergipe"}> SE - Sergipe</MenuItem>
+                        <MenuItem value={"tocantins"}> TO - Tocantins</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
@@ -321,7 +299,6 @@ const Page = () => {
                       <RadioGroup
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"
                         value={genero}
                         onChange={(e) => [setGenero(e.target.value), setError("")]}
                       >

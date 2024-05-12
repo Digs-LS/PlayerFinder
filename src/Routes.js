@@ -6,6 +6,7 @@ import Inicio from "./pages/Inicio";
 import Perfil from "./pages/Perfil";
 import Jogos from "./pages/Jogos";
 import ProcurarJogadores from "./pages/ProcurarJogadores";
+import AdicionarJogo from "./pages/AdicionarJogo";
 import useAuth from "./hooks/useAuth";
 
 const Private = ({ Item }) => {
@@ -25,6 +26,7 @@ export default () => {
         <Route exact path="/jogos" element={<Private Item={Jogos} />} />
         <Route exact path="/jogos/valorant" element={<Private Item={ProcurarJogadores} />} />
         <Route exact path="/perfil" element={<Private Item={Perfil} />} />
+        <Route exact path="/adicionar-jogo" element={<Private Item={AdicionarJogo} />} />
       </Routes>
     </Fragment>
   );

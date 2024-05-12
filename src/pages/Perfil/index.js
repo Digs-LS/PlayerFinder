@@ -28,8 +28,6 @@ const darkTheme = createTheme({
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({Usuário: data.get("usuario")});
     };
 
     return (
@@ -102,7 +100,7 @@ const darkTheme = createTheme({
                                     borderRadius: "10px",
                                 }}
                             >
-                                <Grid container spacing={5}>
+                                <Grid container spacing={5} sx={{}}>
                                     <Grid item xs={12}>
                                         <InputFileUpload />
                                     </Grid>
@@ -111,33 +109,21 @@ const darkTheme = createTheme({
                                         <Typography variant="h6" sx={{color: '#16C83D', paddingBottom: '0.5vh', float: 'inline-start'}}>
                                             Username:
                                         </Typography>
-                                        <TextField required defaultValue={user[0].usuario} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
+                                        <TextField required autoComplete="given-name" defaultValue={user[0].usuario} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
                                     </Grid>
                                     
                                     <Grid item xs={12} >
-                                        <Grid container>
-                                            <Grid item xs={3}>
-                                                <Typography variant="h6" sx={{color: '#16C83D', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
-                                                    Nome:
-                                                </Typography>
-                                            </Grid>
-                                            <Grid item xs={8}>
-                                                <TextField required defaultValue={user[0].nome} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
-                                            </Grid>
-                                        </Grid>
+                                        <Typography variant="h6" sx={{color: '#16C83D', paddingBottom: '0.5vh', float: 'inline-start'}}>
+                                            Nome:
+                                        </Typography>
+                                        <TextField required autoComplete="name" defaultValue={user[0].nome} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
                                     </Grid>
                                     
                                     <Grid item xs={12} >
-                                        <Grid container>
-                                            <Grid item xs={3}>
-                                                <Typography variant="h6" sx={{color: '#16C83D', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
-                                                    Email:
-                                                </Typography>
-                                            </Grid>
-                                            <Grid item xs={8}>
-                                                <TextField required defaultValue={user[0].email} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
-                                            </Grid>
-                                        </Grid>
+                                        <Typography variant="h6" sx={{color: '#16C83D', paddingBottom: '0.5vh', float: 'inline-start'}}>
+                                            Email:
+                                        </Typography>
+                                        <TextField required autoComplete="email" defaultValue={user[0].email} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
                                     </Grid>
 
                                 </Grid>
@@ -154,37 +140,25 @@ const darkTheme = createTheme({
                                 }}
                             >
                                 <Grid container spacing={5} style={{paddingTop: '20%'}}>
-                                    <Grid item xs={12}>
-                                        <Typography variant="h6" sx={{color: '#16C83D', marginRight: '1vw', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
+                                    <Grid item xs={12} >
+                                        <Typography variant="h6" sx={{color: '#16C83D', paddingBottom: '0.5vh', float: 'inline-start'}}>
                                             Data de nascimento:
                                         </Typography>
-                                        {!editar ?
-                                            <Typography variant="h5" sx={{display: 'inline'}}>{user[0].nascimento}</Typography>
-                                        :
-                                            <TextField label="Usuário" defaultValue={user[0].nascimento} sx={{width: '75%'}}/>
-                                        }
+                                        <TextField required defaultValue={user[0].nascimento} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
                                     </Grid>
                                     
-                                    <Grid item xs={12}>
-                                        <Typography variant="h6" sx={{color: '#16C83D', marginRight: '1vw', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
+                                    <Grid item xs={12} >
+                                        <Typography variant="h6" sx={{color: '#16C83D', paddingBottom: '0.5vh', float: 'inline-start'}}>
                                             Estado:
                                         </Typography>
-                                        {!editar ?
-                                            <Typography variant="h5" sx={{display: 'inline'}}>{user[0].estado}</Typography>
-                                        :
-                                            <TextField label="Usuário" defaultValue={user[0].estado} sx={{width: '75%'}}/>
-                                        }
+                                        <TextField required defaultValue={user[0].estado} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
                                     </Grid>
                                     
-                                    <Grid item xs={12}>
-                                        <Typography variant="h6" sx={{color: '#16C83D', marginRight: '1vw', paddingLeft: '1vw', float: 'inline-start', display: 'inline'}}>
+                                    <Grid item xs={12} >
+                                        <Typography variant="h6" sx={{color: '#16C83D', paddingBottom: '0.5vh', float: 'inline-start'}}>
                                             Gênero:
                                         </Typography>
-                                        {!editar ?
-                                            <Typography variant="h5" sx={{display: 'inline'}}>{user[0].genero}</Typography>
-                                        :
-                                            <TextField label="Usuário" variant="filled" defaultValue={user[0].genero} sx={{width: '75%'}}/>
-                                        }
+                                        <TextField required defaultValue={user[0].genero} InputProps={{readOnly: !editar === true ? true : false}} variant={!editar ? "standard" : "filled"} sx={{width: '100%'}}/>
                                     </Grid>
                                 </Grid>
                             </Paper>
