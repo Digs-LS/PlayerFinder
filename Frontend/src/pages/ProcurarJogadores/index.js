@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Avatar, Grid, Box, Container, Typography, Paper, Divider } from "@mui/material";
+import { Avatar, Grid, Box, Container, Typography, Paper } from "@mui/material";
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import PlayerList from "../../components/playerlist";
@@ -73,8 +73,7 @@ const Page = () => {
                             <Grid container spacing={3} justifyContent={'center'} >
                                 <Grid item xs>
                                     <Grid container spacing={2} sx={{mb: 2, justifyContent: 'center' }}>
-                                        <Typography variant='h4' sx={{pt: 2}}> {loadingGame ? "Carregando jogadores..." : jogo ? `Jogadores de ${jogo.titulo}` : "Jogadores não encontrados"} </Typography>
-                                        <Divider sx={{bgcolor: '#16C83D', width: "80%"}}/>
+                                        <Typography variant='h4' sx={{pt: 2, width: '50%', borderBottom: 1, borderColor: '#16C83D' }}> {loadingGame ? "Carregando jogadores..." : jogo ? `Jogadores de ${jogo.titulo}` : "Jogadores não encontrados"} </Typography>
                                     </Grid>
                                     <PlayerList jogoId={jogoId} filtersUsers={filtersUsers} setLoading={setLoading} loading={loading}/>
                                 </Grid>

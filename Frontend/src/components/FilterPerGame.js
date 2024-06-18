@@ -76,99 +76,57 @@ const FilterPerGame = ({ jogoId, atributos = [],setLoading, setFiltersUsers, loa
   const DrawerList = (
     <ThemeProvider theme={darkTheme}>
       <Container component="main" maxWidth="xs">
-        <Box
-          sx={{
-            marginTop: "2vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            color: "white",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "#16C83D" }}>
-            <SportsEsportsIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Filtrar Jogo
+        <Box sx={{ mt: "2vh", display: "flex", flexDirection: "column", alignItems: "center", textAlign: 'center', color: "white", }}>
+          <Typography component="h1" variant="h4" sx={{ width: '80%', mt: 3 , borderBottom: 1, borderColor: '#16C83D'}}>
+            Filtrar jogadores
           </Typography>
 
-            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  width: "20vw",
-                  justifyContent: "center",
-                }}
-              >
-
-                <Paper
-                  component="div"
-                  style={{
-                    padding: "1%",
-                    margin: "1%",
-                    width: "30vw",
-                    backgroundColor: "#202020",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <FormControl sx={{ minWidth: "100%" }}>
-                    <InputLabel htmlFor="username-input">Nome de Usuário</InputLabel>
-                    <Input
-                      id="username-input"
-                      name="username"
-                      value={filters.username}
-                      onChange={handleFilterChange}
-                      style={{
-                        marginBottom:"15px"
-                      }}
-                    />
-                  </FormControl>
-                  <Grid container spacing={3}>
-                    {Object.keys(groupedAttributes).map((titulo) => (
-                      <Grid item xs={12} key={titulo}>
-                        <FormControl sx={{ minWidth: "100%" }}>
-                          <InputLabel id={`${titulo}-label`}>
-                            {titulo}
-                          </InputLabel>
-                          <Select
-                            labelId={`${titulo}-label`}
-                            name={titulo}
-                            value={filters[titulo] || ""}
-                            onChange={handleFilterChange}
-                          >
-                            {groupedAttributes[titulo].map((attr) => (
-                              <MenuItem key={attr.value} value={attr.value}>
-                                {attr.value}
-                              </MenuItem>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Paper>
+          <Box component="form" onSubmit={handleSubmit} sx={{mt: 5}}>
+            <div style={{ display: "flex", flexDirection: "row", width: "20vw", justifyContent: "center", }}>
+              <div style={{width: "100%",}}>
+                <FormControl sx={{ minWidth: "100%" }}>
+                  <InputLabel htmlFor="username-input">Nome de Usuário</InputLabel>
+                  <Input
+                    id="username-input"
+                    name="username"
+                    value={filters.username}
+                    onChange={handleFilterChange}
+                    style={{
+                      marginBottom:"15px"
+                    }}
+                  />
+                </FormControl>
+                <Grid container spacing={3}>
+                  {Object.keys(groupedAttributes).map((titulo) => (
+                    <Grid item xs={12} key={titulo}>
+                      <FormControl sx={{ minWidth: "100%" }}>
+                        <InputLabel id={`${titulo}-label`}>
+                          {titulo}
+                        </InputLabel>
+                        <Select
+                          labelId={`${titulo}-label`}
+                          label={titulo}
+                          name={titulo}
+                          value={filters[titulo] || ""}
+                          onChange={handleFilterChange}
+                        >
+                          {groupedAttributes[titulo].map((attr) => (
+                            <MenuItem key={attr.value} value={attr.value}>
+                              {attr.value}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                  ))}
+                </Grid>
               </div>
+            </div>
 
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{
-                  mt: 3,
-                  mb: 2,
-                  width: "20vw",
-                  color: "white",
-                  bgcolor: "#16C83D",
-                  "&:hover": { backgroundColor: "#16C83D" },
-                }}
-              >
-              {loading ? (
-            <CircularProgress sx={{ height: "10px", height: "10px" }} />
-          ) : ( "Filtrar")} 
-              </Button>
-                         
-            </Box>
-
+            <Button type="submit" variant="contained" sx={{ mt: 5, width: "10vw", color: "white", bgcolor: "#16C83D", "&:hover":{bgcolor:'#32D35A'}, }}>
+              {loading ? (<CircularProgress sx={{ height: "10px", height: "10px" }} /> ) : ( "Filtrar")} 
+            </Button>          
+          </Box>
         </Box>
       </Container>
     </ThemeProvider>
@@ -176,7 +134,7 @@ const FilterPerGame = ({ jogoId, atributos = [],setLoading, setFiltersUsers, loa
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)} style={{ color: 'white', backgroundColor: '#16C83D' }}>Filtros</Button>
+      <Button onClick={toggleDrawer(true)} sx={{ color: 'white', bgcolor: '#16C83D', "&:hover":{bgcolor:'#32D35A'} }}>Filtros</Button>
       <Drawer open={open} anchor='right' onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>

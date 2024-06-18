@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { CircularProgress, Paper, Grid, List, ListItem, ListItemText, Divider, Typography } from '@mui/material';
+import { CircularProgress, Paper, Grid, List, ListItem, ListItemText, Typography, IconButton, Tooltip } from '@mui/material';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { Link } from 'react-router-dom';
 
 const PlayerList = ({ jogoId, filtersUsers, setLoading, loading  }) => {
   const [usuarios, setUsuarios] = useState([]);
@@ -43,7 +45,7 @@ const PlayerList = ({ jogoId, filtersUsers, setLoading, loading  }) => {
     <List sx={{ width: '100%' }}>
       {(filtersUsers != null && filtersUsers.length === 0) || usuarios.length === 0 ? (
         <Typography component="h1" variant="h5">
-          Não foi encontrado nenhum jogador
+          Nenhum jogador encontrado
         </Typography>
       ) : (
         <Grid container spacing={2} sx={{ justifyContent: 'center', maxHeight: '40vh', overflowY: 'scroll' }}>
@@ -51,7 +53,7 @@ const PlayerList = ({ jogoId, filtersUsers, setLoading, loading  }) => {
             <Grid item key={usuario.username} xs={12}>
               <Paper sx={{ p: 2 }}>
                 <React.Fragment>
-                  <ListItem alignItems="flex-start">
+                  <ListItem sx={{ alignItems: 'flex-start', borderBottom: 1, borderColor: '#16C83D' }}>
                     <ListItemText
                       primary={
                         <Typography
@@ -82,16 +84,12 @@ const PlayerList = ({ jogoId, filtersUsers, setLoading, loading  }) => {
                     )
                     }
                     />
-                    {/* <Button
-                      component={Link}
-                      to={`/perfil/${usuario.username}`}
-                      style={{ color: 'white', backgroundColor: '#16C83D' }}
-                    >
-                      <OpenInNewIcon sx={{ display: 'inline', marginRight: '0.3vw' }} />
-                      Ver perfil
-                    </Button> */}
+                    {/* <IconButton component={Link} to={`/perfil/${usuario.username}`} sx={{ ml: 1 , color: 'white', bgcolor: '#16C83D', "&:hover": {color: 'white', bgcolor: '#32D35A'} }}>
+                      <Tooltip title="Ver perfil">
+                        <OpenInNewIcon sx={{ display: 'inline'}} />
+                      </Tooltip>
+                    </IconButton> */}
                   </ListItem>
-                  <Divider variant="inset" component="li" sx={{ marginLeft: '0', bgcolor: '#16C83D' }} />
                 </React.Fragment>
               </Paper>
             </Grid>

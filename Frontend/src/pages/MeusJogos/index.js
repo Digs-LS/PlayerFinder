@@ -36,7 +36,7 @@ const Page = () => {
   useEffect(() => {
     fetchJogosNoPerfil();
     fetchProfilesGames();
-  });
+  }, []);
 
   const fetchJogosNoPerfil = async () => {
       setLoading(true);
@@ -129,9 +129,9 @@ const Page = () => {
             <Typography component="h1" variant="h5">
                 Meus Jogos
             </Typography>
-            {/* {loading ? (
+            {loading ? (
                 <CircularProgress style={{ color: "#16C83D", marginTop: "20px" }} />
-            ) : (<> */}
+            ) : (<>
                 <Box component="div" sx={{ mt: 1, display: "flex", flexDirection: "column", width: "90vw", alignItems: "center", }}>
                     {perfilJogosLoaded && (
                         <TableContainer component={Paper} sx={{ p: "1%", m: "1%", width: "50vw", bgcolor: "#202020", borderRadius: "10px", mt: "2%", }}>
@@ -156,13 +156,13 @@ const Page = () => {
                                         </TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell sx={{ pb: 0, pt: 0 }} colSpan={6}>
+                                        <TableCell sx={{pb: 0, pt: 0}} colSpan={6}>
                                             <Collapse in={open} timeout="auto" unmountOnExit>
                                                 <Box sx={{ margin: 1 }}>
                                                     <Paper component="div" sx={{ p: 2, m: 1, borderRadius: "10px", }}>
                                                         <Typography variant="h6"> {jogo.titulo} </Typography>
                                                         <Table size="small">
-                                                            <TableCell sx={{ borderColor: '#16C83D' }}>teste</TableCell>
+                                                            <TableCell sx={{borderColor: '#16C83D'}}>teste</TableCell>
                                                         </Table>
                                                     </Paper>
                                                 </Box>
@@ -174,7 +174,7 @@ const Page = () => {
                         </TableContainer>
                     )}
                 </Box>
-            {/* </>)} */}
+            </>)}
         </Box>
       </Container>
     </ThemeProvider>
