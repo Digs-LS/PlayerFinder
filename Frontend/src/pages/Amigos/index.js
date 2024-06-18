@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { Link } from "react-router-dom";
 import useFriends from "../../hooks/useFriends";
 import useAuth from "../../hooks/useAuth";
@@ -76,6 +77,7 @@ const Page = () => {
                       <Grid container spacing={2} justifyContent={'center'} mb={2}>
                           <Typography variant='h4' sx={{pt: 2, borderBottom: 1, borderColor: '#16C83D', width: '50%'}}> Meus amigos </Typography>
                       </Grid>
+                      {/* <Typography variant="h5" sx={{mt: 5}}> Você não tem amigos! <br/> <SentimentVeryDissatisfiedIcon fontSize="large"/> </Typography> */}
                       {acceptedFriends.map(friendship => (
                         <Grid item key={friendship.user.username} xs={12} paddingBottom={2}>
                           <Paper sx={{ p: 1.5 }}>

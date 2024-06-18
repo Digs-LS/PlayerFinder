@@ -48,7 +48,7 @@ const PlayerList = ({ jogoId, filtersUsers, setLoading, loading  }) => {
           Nenhum jogador encontrado
         </Typography>
       ) : (
-        <Grid container spacing={2} sx={{ justifyContent: 'center', maxHeight: '40vh', overflowY: 'scroll' }}>
+        <Grid container spacing={2} sx={{ justifyContent: 'center', maxHeight: '45vh', overflowY: 'scroll' }}>
           {usuarios.map((usuario) => (
             <Grid item key={usuario.username} xs={12}>
               <Paper sx={{ p: 2 }}>
