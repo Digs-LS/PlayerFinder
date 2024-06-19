@@ -143,7 +143,7 @@ const UsersList = () => {
     <List sx={{ width: '100%' }}>
     <Grid container spacing={2} sx={{justifyContent: 'center', maxHeight: '46vh', overflowY: 'scroll', }}>
       {users.length === 0 ? (
-        <Typography variant="h6">Nenhum usuário encontrado.</Typography>
+        <Typography variant="h6" sx={{mt: 25}}>Nenhum usuário encontrado.</Typography>
       ) : (
         users.map((user) => (
           <Grid item key={user.id} xs={12}>

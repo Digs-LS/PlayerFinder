@@ -119,6 +119,7 @@ const Page = () => {
     }
   };
 
+  console.log('Profilegames: ', profilesGames, 'JogosNoPerfil: ', jogosNoPerfil);
   return (
     <ThemeProvider theme={darkTheme}>
       <Container component="main" maxWidth="xs">
@@ -132,12 +133,13 @@ const Page = () => {
             {loading ? (
                 <CircularProgress style={{ color: "#16C83D", marginTop: "20px" }} />
             ) : (<>
-                <Box component="div" sx={{ mt: 1, display: "flex", flexDirection: "column", width: "90vw", alignItems: "center", }}>
+                <Box component="div" sx={{ mt: 5, display: "flex", flexDirection: "column", width: "90vw", alignItems: "center", }}>
                     {perfilJogosLoaded && (
-                        <TableContainer component={Paper} sx={{ p: "1%", m: "1%", width: "50vw", bgcolor: "#202020", borderRadius: "10px", mt: "2%", }}>
-                            <Typography variant="h6" style={{color: "white", marginBottom: "1%"}}>
-                            Jogos no Perfil
+                        <TableContainer component={Paper} sx={{ p: 1, m: 1, width: "50vw", minHeight: '60vh', maxHeight: '60vh', bgcolor: "#202020", borderRadius: "10px" }}>
+                            <Typography variant="h6" sx={{color: "white", mt: 1, mb: 1}}>
+                              Jogos no Perfil
                             </Typography>
+                            {jogosNoPerfil ? <Typography sx={{mt: 25}}>Você não possui nenhum jogo cadastrado!</Typography> : 
                             <Table size="small">
                                 {jogosNoPerfil.map((jogo) => (
                                     <><TableRow key={jogo.id}>
@@ -170,7 +172,7 @@ const Page = () => {
                                         </TableCell>
                                     </TableRow></>
                                 ))}
-                            </Table>
+                            </Table>}
                         </TableContainer>
                     )}
                 </Box>
